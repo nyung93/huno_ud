@@ -14,27 +14,25 @@
 
         body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
-            background-color: #F4F7FA; /* 전체 배경색 */
+            background-color: #F4F7FB;
             color: #333333;
             font-size: 15px; /* 최소 폰트 기준 준수 */
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
+        ul, ol { list-style: none; }
+        button { border: none; background: none; cursor: pointer; font-family: inherit; }
 
-        ul, ol {
-            list-style: none;
-        }
-
-        /* [2. Layout Structure] */
+        /* [2. Header Styles] */
         .global-header {
             background-color: #0066B3;
             color: #ffffff;
             width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .header-top {
@@ -46,13 +44,15 @@
             gap: 16px;
         }
 
+        .header-top a:hover { text-decoration: underline; }
+
         .header-main {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 40px;
             height: 80px;
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
         }
 
@@ -69,6 +69,7 @@
             font-size: 12px;
             font-weight: 400;
             margin-top: 4px;
+            letter-spacing: 0;
         }
 
         .gnb {
@@ -78,150 +79,152 @@
             font-weight: 600;
         }
 
-        .main-container {
+        /* [3. Layout Structure] */
+        .app-container {
             display: flex;
-            max-width: 1400px;
-            margin: 40px auto;
-            gap: 30px;
-            padding: 0 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 40px 40px;
+            gap: 32px;
             align-items: flex-start;
         }
 
-        .left-sidebar {
-            width: 240px;
+        /* [4. Left Sidebar (Modernized)] */
+        .sidebar {
+            width: 260px;
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
             gap: 24px;
+            position: sticky;
+            top: 120px;
         }
 
-        .content-area {
-            flex: 1;
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-            padding: 50px;
-        }
-
-        .right-sidebar {
-            width: 120px;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        /* [3. Left Sidebar Styles] */
         .profile-card {
             background-color: #ffffff;
-            border-radius: 12px;
-            padding: 30px 20px;
+            border-radius: 16px;
+            padding: 32px 24px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border: 1px solid #EAECEF;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
 
-        .profile-img-wrap {
-            width: 100px;
-            height: 100px;
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            background-color: #EEEEEE;
+            background-color: #2B6CB0;
             margin: 0 auto 16px auto;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
             overflow: hidden;
-            border: 3px solid #F4F7FA;
+            border: 4px solid #F4F7FB;
         }
 
-        .profile-img-wrap svg {
-            width: 100%;
-            height: 100%;
-            fill: #CCCCCC;
-            margin-top: 15px;
-        }
+        .profile-avatar svg { width: 60px; height: 60px; stroke: #ffffff; margin-bottom: -5px;}
 
-        .profile-name {
+        .profile-info-name {
             font-size: 18px;
             font-weight: 700;
+            color: #1A202C;
             margin-bottom: 8px;
         }
 
-        .profile-dept {
+        .profile-info-dept {
             font-size: 14px;
-            color: #666666;
+            color: #718096;
             line-height: 1.4;
         }
 
-        .lnb-menu {
-            background-color: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        .profile-meta {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px dashed #EAECEF;
+            font-size: 14px;
+            color: #4A5568;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
         }
 
-        .lnb-title {
+        .nav-menu {
+            background-color: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #EAECEF;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .nav-title {
             background-color: #00A495;
             color: #ffffff;
-            padding: 16px 20px;
+            padding: 16px 24px;
             font-size: 18px;
             font-weight: 700;
         }
 
-        .lnb-list li {
-            border-bottom: 1px solid #EEEEEE;
-        }
-
-        .lnb-list li:last-child {
-            border-bottom: none;
-        }
-
-        .lnb-list a {
-            display: block;
-            padding: 16px 20px;
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 24px;
+            color: #4A5568;
             font-size: 15px;
-            color: #555555;
+            font-weight: 600;
+            border-bottom: 1px solid #F1F5F9;
             transition: all 0.2s ease;
         }
 
-        .lnb-list a:hover {
-            background-color: #F2FBFA;
+        .nav-item:last-child { border-bottom: none; }
+
+        .nav-item.active {
             color: #00A495;
-            font-weight: 600;
+            background-color: #F2FBFA;
+            border-left: 4px solid #00A495;
+            padding-left: 20px;
         }
 
-        .roadmap-status {
+        .nav-item:hover:not(.active) { background-color: #F8FAFC; }
+
+        .roadmap-status-area {
             background-color: #ffffff;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid #EAECEF;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
 
         .roadmap-title {
             font-size: 16px;
             font-weight: 700;
+            color: #1A202C;
             margin-bottom: 16px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
         }
 
-        .roadmap-item {
+        .roadmap-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .roadmap-list-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px dashed #EEEEEE;
             font-size: 14px;
-            color: #444444;
+            color: #4A5568;
+            padding: 8px 0;
+            border-bottom: 1px dashed #F1F5F9;
         }
+        .roadmap-list-item:last-child { border-bottom: none; }
 
-        .roadmap-item:last-child {
-            border-bottom: none;
-        }
-
-        .status-badge {
-            font-size: 13px;
-            font-weight: 700;
-        }
-        .status-ing { color: #E53935; }
-        .status-done { color: #555555; }
+        .status-badge { font-size: 13px; font-weight: 700; }
+        .status-badge.ing { color: #E53E3E; }
+        .status-badge.done { color: #718096; }
 
         .btn-roadmap {
             display: block;
@@ -236,22 +239,30 @@
             font-size: 14px;
         }
 
-        /* [4. Main Content Styles] */
+        /* [5. Main Content Area (Modern Dashboard)] */
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
         .breadcrumb {
-            text-align: right;
             font-size: 14px;
-            color: #777777;
-            margin-bottom: 20px;
+            color: #718096;
+            margin-bottom: 16px;
+            text-align: right;
         }
 
         .hero-banner {
             background: linear-gradient(135deg, #00A495 0%, #00897B 100%);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 40px;
             color: #ffffff;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 164, 149, 0.2);
         }
 
         .hero-title {
@@ -263,209 +274,213 @@
         .hero-desc {
             font-size: 16px;
             line-height: 1.7;
-            max-width: 60%;
-            margin-bottom: 20px;
+            max-width: 65%;
+            margin-bottom: 24px;
             opacity: 0.95;
         }
 
         .hero-highlight {
             display: inline-block;
             background-color: #1A4B81;
-            padding: 8px 16px;
+            padding: 8px 20px;
             border-radius: 30px;
             font-size: 14px;
             font-weight: 700;
         }
 
-        .hero-deco {
-            position: absolute;
-            right: 20px;
-            bottom: 0;
-            width: 250px;
-            height: 100%;
-            opacity: 0.15;
-            background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #ffffff 10px, #ffffff 20px);
-        }
-
-        .section {
-            margin-bottom: 70px;
-        }
-
-        .section-header {
+        .dashboard-grid {
             display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            border: 1px solid #F1F5F9;
+        }
+
+        .card-row-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: flex-start;
             align-items: center;
             gap: 12px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
 
-        .section-num {
-            font-size: 32px;
-            font-weight: 800;
-            color: #00A495;
-            line-height: 1;
-        }
-
-        .section-title {
+        .card-title {
             font-size: 24px;
-            font-weight: 700;
+            font-weight: 800;
             color: #1A4B81;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-title .num {
+            font-size: 30px;
+            color: #00A495;
+            margin-right: 8px;
+            line-height: 1;
         }
 
         .badge-req {
             background-color: #4A90E2;
             color: #ffffff;
             padding: 4px 10px;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 13px;
             font-weight: 700;
             margin-top: 4px;
         }
 
-        .section-sub {
+        .card-sub {
             font-size: 15px;
-            color: #666666;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #EEEEEE;
+            color: #718096;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #F1F5F9;
         }
 
         /* 01. 졸업 후 계획 */
-        .tab-wrap {
+        .plan-tabs {
             display: flex;
-            gap: 16px;
+            gap: 12px;
             margin-bottom: 24px;
         }
 
-        .tab-item {
+        .plan-tab {
             flex: 1;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            padding: 24px 0;
+            gap: 8px;
+            padding: 20px 0;
             background-color: #ffffff;
-            border: 1px solid #DDDDDD;
+            border: 1px solid #E2E8F0;
             border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #4A5568;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
-        .tab-item:hover {
-            border-color: #00A495;
-        }
-
-        .tab-active {
+        .plan-tab.active {
             border: 2px solid #00A495;
             background-color: #F2FBFA;
             color: #00A495;
         }
 
-        .tab-active svg { stroke: #00A495; }
-        .tab-item svg { stroke: #666666; }
+        .plan-tab svg { width: 24px; height: 24px; stroke: currentColor; fill: none; }
 
-        .tab-text {
-            font-size: 16px;
-            font-weight: 700;
-        }
-
-        .sub-tab-wrap {
+        .plan-cases {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
             margin-bottom: 20px;
         }
 
-        .sub-tab {
+        .case-box {
             padding: 12px 24px;
-            background-color: #ffffff;
-            border: 1px solid #DDDDDD;
-            border-radius: 40px;
+            border: 1px solid #E2E8F0;
+            border-radius: 30px;
             font-size: 15px;
-            color: #555555;
+            color: #4A5568;
+            background-color: #ffffff;
             cursor: pointer;
         }
 
-        .sub-tab:hover {
-            background-color: #F4F7FA;
-            border-color: #BBBBBB;
-        }
+        .case-box:hover { background-color: #F8FAFC; border-color: #CBD5E0; }
 
         .info-text {
             font-size: 14px;
-            color: #888888;
+            color: #A0AEC0;
             text-align: center;
         }
 
-        /* 02 & 04. 진단 결과 카드 */
-        .result-card {
-            background-color: #E6F4F1;
+        /* 02. 진로적성검사 & 04. 직업기초역량진단 */
+        .result-box {
+            background: linear-gradient(135deg, #E6FFFA 0%, #F0FFF4 100%);
             border-radius: 16px;
-            padding: 32px 40px;
-            position: relative;
+            padding: 32px;
+            border: 1px solid #C6F6D5;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
-        .result-card.blue { background-color: #E8F0FE; }
+        .result-box.blue {
+            background: linear-gradient(135deg, #EBF8FF 0%, #F0F5FF 100%);
+            border-color: #BEE3F8;
+        }
 
         .result-tip {
             font-size: 14px;
             font-style: italic;
-            color: #555555;
+            color: #048271;
             margin-bottom: 8px;
+            font-weight: 600;
         }
+        .result-box.blue .result-tip { color: #2B6CB0; }
 
         .result-header {
-            font-size: 22px;
-            font-weight: 700;
-            color: #333333;
+            font-size: 20px;
+            font-weight: 800;
+            color: #1A202C;
             margin-bottom: 16px;
         }
+        .result-date { font-size: 16px; font-weight: 500; color: #718096; }
 
-        .result-date {
-            font-size: 18px;
-            font-weight: 400;
-            color: #666666;
-        }
-
-        .result-highlight-wrap {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 20px;
+        .result-highlight {
             font-size: 16px;
             font-weight: 700;
+            color: #2D3748;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .result-badge {
             background-color: #ffffff;
-            color: #D32F2F;
+            color: #E53E3E;
             padding: 6px 16px;
             border-radius: 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-
+        
         .result-score {
             background-color: #ffffff;
-            color: #1A4B81;
+            color: #2B6CB0;
             padding: 6px 16px;
             border-radius: 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-size: 18px;
         }
 
         .result-desc {
             font-size: 15px;
-            color: #444444;
+            color: #4A5568;
             line-height: 1.7;
-            max-width: 80%;
+            margin-top: auto;
         }
 
         /* 03. 직업 탐색 */
-        .job-target {
+        .job-target-box {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 24px 30px;
-            border: 1px solid #E0E0E0;
+            justify-content: space-between;
+            padding: 24px 32px;
+            background-color: #ffffff;
+            border: 1px solid #E2E8F0;
             border-radius: 12px;
             margin-bottom: 24px;
         }
@@ -473,24 +488,24 @@
         .job-target-label {
             font-size: 18px;
             font-weight: 700;
-            color: #333333;
+            color: #4A5568;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .job-target-value {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 800;
-            color: #333333;
+            color: #1A202C;
         }
 
-        .job-detail {
-            background-color: #F8F9FA;
-            border: 1px solid #EEEEEE;
+        .job-detail-table {
+            background-color: #F8FAFC;
             border-radius: 12px;
-            padding: 30px;
+            padding: 32px;
             margin-bottom: 24px;
+            border: 1px solid #F1F5F9;
         }
 
         .detail-row {
@@ -498,13 +513,10 @@
             margin-bottom: 16px;
             align-items: flex-start;
         }
-
-        .detail-row:last-child {
-            margin-bottom: 0;
-        }
+        .detail-row:last-child { margin-bottom: 0; }
 
         .detail-label {
-            width: 120px;
+            width: 140px;
             background-color: #8C9EFF;
             color: #ffffff;
             padding: 8px 0;
@@ -514,103 +526,109 @@
             font-weight: 700;
             flex-shrink: 0;
         }
-
         .detail-row:nth-child(2) .detail-label { background-color: #7986CB; }
         .detail-row:nth-child(3) .detail-label { background-color: #5C6BC0; }
 
         .detail-value {
             flex: 1;
-            padding-left: 20px;
+            padding-left: 24px;
             font-size: 15px;
-            color: #444444;
-            padding-top: 6px;
+            color: #2D3748;
             line-height: 1.6;
+            padding-top: 6px;
         }
 
-        .stats-wrap {
+        .job-stats {
             display: flex;
             gap: 16px;
-            align-items: stretch;
         }
 
-        .stat-box {
-            flex: 1;
-            border: 1px solid #DDDDDD;
+        .stat-pill {
+            background-color: #ffffff;
+            border: 1px solid #E2E8F0;
             border-radius: 12px;
-            padding: 24px 30px;
+            padding: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex: 1;
         }
 
-        .stat-label {
-            font-size: 16px;
-            color: #666666;
-            font-weight: 500;
-        }
-
-        .stat-value {
-            font-size: 28px;
-            font-weight: 800;
-            color: #333333;
-        }
+        .stat-pill-label { font-size: 16px; font-weight: 600; color: #718096; }
+        .stat-pill-value { font-size: 28px; font-weight: 800; color: #1A202C; }
 
         /* 05. 목표 가치관 */
-        .rank-wrap {
+        .values-content {
             display: flex;
-            gap: 16px;
-            margin-bottom: 24px;
+            gap: 32px;
+            align-items: stretch;
         }
 
-        .rank-box {
-            flex: 1;
-            border: 1px solid #DDDDDD;
-            border-radius: 12px;
-            padding: 30px 0;
+        .values-list {
+            flex: 1.2;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .value-item {
+            display: flex;
             align-items: center;
             gap: 20px;
-        }
-
-        .rank-num {
-            font-size: 18px;
-            color: #888888;
-        }
-
-        .rank-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: #333333;
-        }
-
-        .expert-comment {
-            background-color: #E8EAF6;
+            padding: 24px;
+            border: 1px solid #E2E8F0;
             border-radius: 12px;
-            padding: 30px 40px;
-            font-size: 16px;
-            color: #444444;
+            background-color: #ffffff;
+        }
+
+        .value-num {
+            font-size: 18px;
+            color: #A0AEC0;
+            font-weight: 600;
+            width: 40px;
+        }
+
+        .value-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #1A202C;
+            flex: 1;
+            text-align: center;
+        }
+
+        .expert-box {
+            flex: 1;
+            background-color: #EBF8FF;
+            border-radius: 16px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 4px solid #4299E1;
+        }
+
+        .expert-desc {
+            font-size: 15px;
+            color: #2D3748;
             line-height: 1.8;
-            border-left: 4px solid #5C6BC0;
         }
 
         .action-area {
             text-align: right;
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 2px solid #EEEEEE;
+            margin-top: 40px;
         }
 
         .btn-next {
             background-color: #FF9800;
             color: #ffffff;
-            border: none;
             padding: 20px 60px;
             border-radius: 8px;
             font-size: 18px;
             font-weight: 700;
-            cursor: pointer;
             transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .btn-next:hover {
@@ -619,27 +637,40 @@
             box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
         }
 
-        /* [5. Right Sidebar (Quick Menu) Styles] */
+        /* [6. Right Sidebar (Quick Menu)] */
+        .right-sidebar {
+            width: 140px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: sticky;
+            top: 120px;
+        }
+
         .btn-u-chance {
             background-color: #FFB74D;
             color: #ffffff;
             text-align: center;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 14px 10px;
+            border-radius: 12px;
             font-weight: 700;
             font-size: 14px;
+            box-shadow: 0 4px 10px rgba(255, 183, 77, 0.3);
+            transition: transform 0.2s;
         }
+        .btn-u-chance:hover { transform: translateY(-2px); }
 
         .quick-menu-box {
             background-color: #ffffff;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            border: 1px solid #EEEEEE;
+            border: 1px solid #EAECEF;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
 
         .quick-title {
-            background-color: #424242;
+            background-color: #333333;
             color: #ffffff;
             text-align: center;
             padding: 12px;
@@ -654,55 +685,60 @@
 
         .quick-item {
             width: 50%;
-            padding: 16px 0;
+            padding: 20px 0;
             text-align: center;
-            border-bottom: 1px solid #EEEEEE;
-            border-right: 1px solid #EEEEEE;
+            border-bottom: 1px solid #F1F5F9;
+            border-right: 1px solid #F1F5F9;
             font-size: 12px;
-            color: #555555;
+            color: #4A5568;
+            font-weight: 600;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             cursor: pointer;
+            transition: background-color 0.2s;
         }
 
+        .quick-item:hover { background-color: #F8FAFC; color: #00A495; }
         .quick-item:nth-child(even) { border-right: none; }
         .quick-item:nth-last-child(-n+2) { border-bottom: none; }
 
-        .quick-item svg {
-            width: 24px;
-            height: 24px;
-            stroke: #1A4B81;
-        }
+        .quick-item svg { width: 26px; height: 26px; stroke: #1A4B81; }
+        .quick-item:hover svg { stroke: #00A495; }
 
         .banner-download {
             background-color: #7986CB;
             color: #ffffff;
             text-align: center;
-            padding: 16px;
-            border-radius: 8px;
+            padding: 20px 10px;
+            border-radius: 12px;
             font-weight: 700;
             font-size: 14px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(121, 134, 203, 0.3);
+            cursor: pointer;
         }
+        .banner-download:hover { background-color: #5C6BC0; }
 
         .partner-banners {
             background-color: #ffffff;
-            border: 1px solid #EEEEEE;
-            border-radius: 8px;
+            border: 1px solid #EAECEF;
+            border-radius: 12px;
             padding: 16px;
             display: flex;
             flex-direction: column;
             gap: 16px;
             text-align: center;
             font-size: 13px;
-            font-weight: 600;
-            color: #333;
+            font-weight: 700;
+            color: #2D3748;
         }
+        .partner-banners div { cursor: pointer; padding: 4px 0; }
+        .partner-banners div:hover { color: #00A495; }
 
     </style>
 </head>
@@ -738,56 +774,61 @@
         </div>
     </header>
 
-    <div class="main-container">
+    <div class="app-container">
         
         <!-- Left Sidebar -->
-        <aside class="left-sidebar">
+        <aside class="sidebar">
             <div class="profile-card">
-                <div class="profile-img-wrap">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                <div class="profile-avatar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
-                <div class="profile-name">김은수(여자)</div>
-                <div class="profile-dept">소프트웨어학과<br>네트워크전공 3학년</div>
-                <div class="profile-dept" style="margin-top:8px;">지도교수 홍길동</div>
+                <div class="profile-info-name">김은수(여자)</div>
+                <div class="profile-info-dept">소프트웨어학과<br>네트워크전공 3학년</div>
+                <div class="profile-meta">
+                    <span>지도교수</span>
+                    <span style="font-weight: 600; color: #1A202C;">홍길동</span>
+                </div>
             </div>
 
-            <nav class="lnb-menu">
-                <div class="lnb-title">진로설계</div>
-                <ul class="lnb-list">
-                    <li><a href="#">진로적성검사</a></li>
-                    <li><a href="#">목표직업탐색</a></li>
-                    <li><a href="#">직업기초역량진단</a></li>
-                    <li><a href="#">목표가치설정</a></li>
-                </ul>
+            <nav class="nav-menu">
+                <div class="nav-title">진로설계</div>
+                <a href="#" class="nav-item">진로적성검사</a>
+                <a href="#" class="nav-item">목표직업탐색</a>
+                <a href="#" class="nav-item">직업기초역량진단</a>
+                <a href="#" class="nav-item">목표가치설정</a>
             </nav>
 
-            <div class="roadmap-status">
+            <div class="roadmap-status-area">
                 <div class="roadmap-title">
                     마이로드맵
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A0AEC0" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                 </div>
-                <div class="roadmap-item">
-                    <span>진로설계</span>
-                    <span class="status-badge status-ing">진행</span>
+                <div class="roadmap-list">
+                    <div class="roadmap-list-item">
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00A495" stroke-width="2" style="vertical-align: middle; margin-right:4px;"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg> 진로설계</span>
+                        <span class="status-badge ing">진행</span>
+                    </div>
+                    <div class="roadmap-list-item">
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B6CB0" stroke-width="2" style="vertical-align: middle; margin-right:4px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> 역량개발</span>
+                        <span class="status-badge done">완료</span>
+                    </div>
+                    <div class="roadmap-list-item">
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ED8936" stroke-width="2" style="vertical-align: middle; margin-right:4px;"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg> 실전취업</span>
+                        <span class="status-badge done">완료</span>
+                    </div>
                 </div>
-                <div class="roadmap-item">
-                    <span>역량개발</span>
-                    <span class="status-badge status-done">완료</span>
-                </div>
-                <div class="roadmap-item">
-                    <span>실전취업</span>
-                    <span class="status-badge status-done">완료</span>
-                </div>
-                <a href="#" class="btn-roadmap">학년별로드맵 &gt;</a>
+                <a href="#" class="btn-roadmap">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right:4px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                    학년별로드맵 &gt;
+                </a>
             </div>
         </aside>
 
         <!-- Main Content Area -->
-        <main class="content-area">
+        <main class="main-wrapper">
             <div class="breadcrumb">Home > 진로설계</div>
 
             <div class="hero-banner">
-                <div class="hero-deco"></div>
                 <h1 class="hero-title">진로설계</h1>
                 <p class="hero-desc">
                     진로설계를 해보는 것만으로도 대학생활이 달라진다구?<br>
@@ -796,163 +837,172 @@
                 <div class="hero-highlight">필수 항목을 모두 수행해야 PASS를 받으실 수 있습니다. 모두 수행하여 PASS를 받아보세요!</div>
             </div>
 
-            <!-- 01. 졸업 후 계획 -->
-            <section class="section">
-                <div class="section-header">
-                    <span class="section-num">01</span>
-                    <span class="badge-req">필수</span>
-                    <h2 class="section-title">졸업 후 계획</h2>
-                </div>
-                <div class="section-sub">진로방향에 대해 생각해 봅시다.</div>
-
-                <div class="tab-wrap">
-                    <div class="tab-item tab-active">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                        <span class="tab-text" style="color: #00A495;">취업</span>
+            <div class="dashboard-grid">
+                
+                <!-- 01. 졸업 후 계획 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"><span class="num">01</span> 졸업 후 계획</div>
+                        <div class="badge-req">필수</div>
                     </div>
-                    <div class="tab-item">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
-                        <span class="tab-text">진학</span>
+                    <div class="card-sub">진로방향에 대해 생각해 봅시다.</div>
+                    
+                    <div class="plan-tabs">
+                        <div class="plan-tab active">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                            취업
+                        </div>
+                        <div class="plan-tab">
+                            <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                            진학
+                        </div>
+                        <div class="plan-tab">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+                            창업
+                        </div>
+                        <div class="plan-tab">
+                            <svg viewBox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                            고시 및 기타
+                        </div>
                     </div>
-                    <div class="tab-item">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
-                        <span class="tab-text">창업</span>
+
+                    <div class="plan-cases">
+                        <div class="case-box">대기업</div>
+                        <div class="case-box">중견기업</div>
+                        <div class="case-box">중소기업</div>
+                        <div class="case-box">공공기관</div>
+                        <div class="case-box">외국계</div>
+                        <div class="case-box">해외기업</div>
                     </div>
-                    <div class="tab-item">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-                        <span class="tab-text">고시 및 기타</span>
-                    </div>
-                </div>
-
-                <div class="sub-tab-wrap">
-                    <button class="sub-tab">대기업</button>
-                    <button class="sub-tab">중견기업</button>
-                    <button class="sub-tab">중소기업</button>
-                    <button class="sub-tab">공공기관</button>
-                    <button class="sub-tab">외국계</button>
-                    <button class="sub-tab">해외기업</button>
-                </div>
-                <p class="info-text">중복되는 기업유형을 선택해주세요. 세부기업유형까지 선택하지 않으면 완료처리가 되지 않습니다.</p>
-            </section>
-
-            <!-- 02. 진로적성검사 -->
-            <section class="section">
-                <div class="section-header">
-                    <span class="section-num">02</span>
-                    <h2 class="section-title">진로적성검사</h2>
-                </div>
-                <div class="section-sub">진로검사를 통해 나의 성향을 파악하고, 성격과 흥미에 맞는 직업세계와 연결해보세요.</div>
-
-                <div class="result-card">
-                    <div class="result-tip">Tip</div>
-                    <div class="result-header">진로적성검사 완료 <span class="result-date">(2025-07-15)</span></div>
-                    <div class="result-highlight-wrap">
-                        나의 유형 <span class="result-badge">외향 열정형</span>
-                    </div>
-                    <p class="result-desc">내가 잘 하는 일을 해야 할까? 내가 좋아하는 직업은 무엇일까? 직업을 찾는 것은 진로설계의 첫걸음입니다. 진로적성검사를 통해 나의 진로를 발견해보세요.</p>
-                </div>
-            </section>
-
-            <!-- 03. 직업 탐색 -->
-            <section class="section">
-                <div class="section-header">
-                    <span class="section-num">03</span>
-                    <span class="badge-req">필수</span>
-                    <h2 class="section-title">직업 탐색</h2>
-                </div>
-                <div class="section-sub">전공 및 적성관련 다양한 직업을 탐색해보고, 내가 원하는 목표직업을 선정해보세요.</div>
-
-                <div class="job-target">
-                    <div class="job-target-label">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-                        목표직업
-                    </div>
-                    <div class="job-target-value">컴퓨터프로그래머</div>
+                    <p class="info-text">중복되는 기업유형을 선택해주세요. 세부기업유형까지 선택하지 않으면 완료처리가 되지 않습니다.</p>
                 </div>
 
-                <div class="job-detail">
-                    <div class="detail-row">
-                        <div class="detail-label">직군</div>
-                        <div class="detail-value">정보통신관련직</div>
+                <!-- 02 & 04 Row -->
+                <div class="card-row-split">
+                    <!-- 02. 진로적성검사 -->
+                    <div class="card" style="padding:0; border:none; box-shadow:none;">
+                        <div class="card-header">
+                            <div class="card-title"><span class="num">02</span> 진로적성검사</div>
+                        </div>
+                        <div class="card-sub" style="margin-bottom:16px;">진로검사를 통해 나의 성향을 파악하고, 성격과 흥미에 맞는 직업세계와 연결해보세요.</div>
+                        <div class="result-box">
+                            <div class="result-tip">Tip</div>
+                            <div class="result-header">진로적성검사 완료 <span class="result-date">(2025-07-15)</span></div>
+                            <div class="result-highlight">
+                                나의 유형 <span class="result-badge">외향 열정형</span>
+                            </div>
+                            <p class="result-desc">내가 잘 하는 일을 해야 할까? 내가 좋아하는 직업은 무엇일까? 직업을 찾는 것은 진로설계의 첫걸음입니다. 진로적성검사를 통해 나의 진로를 발견해보세요.</p>
+                        </div>
                     </div>
-                    <div class="detail-row">
-                        <div class="detail-label">주요역량</div>
-                        <div class="detail-value">정보 / 기술 / 수리 / 문제해결 / 자기개발</div>
-                    </div>
-                    <div class="detail-row">
-                        <div class="detail-label">개요</div>
-                        <div class="detail-value">컴퓨터의 언어를 이용해서 프로그램의 설계, 코딩, 디버깅 및 테스트의 과정을 통하여 컴퓨터 프로그램을 전문적으로 개발한다.</div>
+
+                    <!-- 04. 직업기초역량진단 -->
+                    <div class="card" style="padding:0; border:none; box-shadow:none;">
+                        <div class="card-header">
+                            <div class="card-title"><span class="num">04</span> 직업기초역량진단</div>
+                        </div>
+                        <div class="card-sub" style="margin-bottom:16px;">직업에 필요한 10가지 기초역량 요인을 진단해보고 부족한 역량을 파악해보세요.</div>
+                        <div class="result-box blue">
+                            <div class="result-tip">Tip</div>
+                            <div class="result-header">직업기초역량진단 완료 <span class="result-date">(2023-03-10)</span></div>
+                            <div class="result-highlight">
+                                나의 직업 적합성 <span class="result-score">55.22점</span>
+                            </div>
+                            <p class="result-desc">실제 직무에서의 능력을 평가하는 기업이 증가하고 있습니다. 내가 가지고 있는 역량이 무엇인지 점검해 취업활동에 한발짝 더 나아가 보세요.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="stats-wrap">
-                    <div class="stat-box">
-                        <span class="stat-label">전체직업</span>
-                        <span class="stat-value">6415</span>
+                <!-- 03. 직업 탐색 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"><span class="num">03</span> 직업 탐색</div>
+                        <div class="badge-req">필수</div>
                     </div>
-                    <div class="stat-box">
-                        <span class="stat-label">적성관련</span>
-                        <span class="stat-value">102</span>
+                    <div class="card-sub">전공 및 적성관련 다양한 직업을 탐색해보고, 내가 원하는 목표직업을 선정해보세요.</div>
+                    
+                    <div class="job-target-box">
+                        <div class="job-target-label">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                            목표직업
+                        </div>
+                        <div class="job-target-value">컴퓨터프로그래머</div>
                     </div>
-                    <div class="stat-box">
-                        <span class="stat-label">학과관련</span>
-                        <span class="stat-value">6</span>
-                    </div>
-                </div>
-            </section>
 
-            <!-- 04. 직업기초역량진단 -->
-            <section class="section">
-                <div class="section-header">
-                    <span class="section-num">04</span>
-                    <h2 class="section-title">직업기초역량진단</h2>
-                </div>
-                <div class="section-sub">직업에 필요한 10가지 기초역량 요인을 진단해보고 부족한 역량을 파악해보세요.</div>
-
-                <div class="result-card blue">
-                    <div class="result-tip">Tip</div>
-                    <div class="result-header">직업기초역량진단 완료 <span class="result-date">(2023-03-10)</span></div>
-                    <div class="result-highlight-wrap">
-                        나의 직업 적합성 <span class="result-score">55.22점</span>
+                    <div class="job-detail-table">
+                        <div class="detail-row">
+                            <div class="detail-label">직군</div>
+                            <div class="detail-value">정보통신관련직</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">주요역량</div>
+                            <div class="detail-value">정보 / 기술 / 수리 / 문제해결 / 자기개발</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">개요</div>
+                            <div class="detail-value">컴퓨터의 언어를 이용해서 프로그램의 설계, 코딩, 디버깅 및 테스트의 과정을 통하여 컴퓨터 프로그램을 전문적으로 개발한다.</div>
+                        </div>
                     </div>
-                    <p class="result-desc">실제 직무에서의 능력을 평가하는 기업이 증가하고 있습니다. 내가 가지고 있는 역량이 무엇인지 점검해 취업활동에 한발짝 더 나아가 보세요.</p>
-                </div>
-            </section>
 
-            <!-- 05. 목표 가치관 -->
-            <section class="section">
-                <div class="section-header">
-                    <span class="section-num">05</span>
-                    <h2 class="section-title">목표 가치관</h2>
-                </div>
-                <div class="section-sub">내가 선정한 진로선택의 직업성을 확인해 봅시다.</div>
-
-                <div class="rank-wrap">
-                    <div class="rank-box">
-                        <span class="rank-num">1순위</span>
-                        <span class="rank-value">돈</span>
-                    </div>
-                    <div class="rank-box">
-                        <span class="rank-num">2순위</span>
-                        <span class="rank-value">성공</span>
-                    </div>
-                    <div class="rank-box">
-                        <span class="rank-num">3순위</span>
-                        <span class="rank-value">지식</span>
+                    <div class="job-stats">
+                        <div class="stat-pill">
+                            <span class="stat-pill-label">전체직업</span>
+                            <span class="stat-pill-value">6415</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="stat-pill-label">적성관련</span>
+                            <span class="stat-pill-value">102</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="stat-pill-label">학과관련</span>
+                            <span class="stat-pill-value">6</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="expert-comment">
-                    국내외 웹 서비스 시장의 활성화로 웹 프로그래머의 수요가 증가하고 있다. 높은 수요에 비하여 기업에서 즉시 활용가능한 인재의 공급 비율은 낮은 실정이다. 다양한 프로젝트를 통하여 실력을 쌓아간다면 전문성과 희소성을 인정받을 수 있을 것이다.
+                <!-- 05. 목표 가치관 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"><span class="num">05</span> 목표 가치관</div>
+                    </div>
+                    <div class="card-sub">내가 선정한 진로선택의 직업성을 확인해 봅시다.</div>
+                    
+                    <div class="values-content">
+                        <div class="values-list">
+                            <div class="value-item">
+                                <div class="value-num">1순위</div>
+                                <div class="value-title">돈</div>
+                            </div>
+                            <div class="value-item">
+                                <div class="value-num">2순위</div>
+                                <div class="value-title">성공</div>
+                            </div>
+                            <div class="value-item">
+                                <div class="value-num">3순위</div>
+                                <div class="value-title">지식</div>
+                            </div>
+                        </div>
+                        
+                        <div class="expert-box">
+                            <p class="expert-desc">
+                                국내외 웹 서비스 시장의 활성화로 웹 프로그래머의 수요가 증가하고 있다. 높은 수요에 비하여 기업에서 즉시 활용가능한 인재의 공급 비율은 낮은 실정이다. 다양한 프로젝트를 통하여 실력을 쌓아간다면 전문성과 희소성을 인정받을 수 있을 것이다.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </section>
 
-            <div class="action-area">
-                <button type="button" class="btn-next">NEXT 역량개발 &rarr;</button>
             </div>
+
+            <!-- Action Area -->
+            <div class="action-area">
+                <button type="button" class="btn-next">
+                    NEXT 역량개발 
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </div>
+
         </main>
 
-        <!-- Right Sidebar -->
+        <!-- Right Sidebar (Quick Menu 부활) -->
         <aside class="right-sidebar">
             <a href="#" class="btn-u-chance">U-Chance 바로가기</a>
             
@@ -980,7 +1030,7 @@
 
             <div class="banner-download">
                 마이캠퍼스<br>DOWNLOAD
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             </div>
 
             <div class="partner-banners">
