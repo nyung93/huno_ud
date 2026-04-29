@@ -406,71 +406,141 @@
             text-align: center;
         }
 
-        /* 02. 진로적성검사 & 04. 직업기초역량진단 */
-        .result-box {
-            background: linear-gradient(135deg, #E6FFFA 0%, #F0FFF4 100%);
-            border-radius: 16px;
-            padding: 32px;
-            border: 1px solid #C6F6D5;
-            height: 100%;
+        /* 02. 진로적성검사 & 04. 직업기초역량진단 (카드 및 차트 스타일 고도화) */
+        .card-result {
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
 
-        .result-box.blue {
+        .result-content {
+            flex: 1;
+            border-radius: 16px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-content.bg-mint {
+            background: linear-gradient(135deg, #E6FFFA 0%, #F0FFF4 100%);
+            border: 1px solid #C6F6D5;
+        }
+
+        .result-content.bg-blue {
             background: linear-gradient(135deg, #EBF8FF 0%, #F0F5FF 100%);
-            border-color: #BEE3F8;
+            border: 1px solid #BEE3F8;
+        }
+
+        .result-content.flex-row {
+            flex-direction: row;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .result-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .result-tip {
             font-size: 14px;
-            font-style: italic;
+            font-weight: 800;
             color: #048271;
-            margin-bottom: 8px;
+            background-color: #C6F6D5;
+            padding: 6px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .result-tip.blue {
+            color: #2B6CB0;
+            background-color: #BEE3F8;
+        }
+
+        .result-date {
+            font-size: 14px;
+            color: #718096;
             font-weight: 600;
         }
-        .result-box.blue .result-tip { color: #2B6CB0; }
 
-        .result-header {
-            font-size: 20px;
+        .result-type {
+            font-size: 18px;
             font-weight: 800;
             color: #1A202C;
-            margin-bottom: 16px;
-        }
-        .result-date { font-size: 16px; font-weight: 500; color: #718096; }
-
-        .result-highlight {
-            font-size: 16px;
-            font-weight: 700;
-            color: #2D3748;
-            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .result-badge {
+        .badge-type {
             background-color: #ffffff;
             color: #E53E3E;
-            padding: 6px 16px;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        
-        .result-score {
-            background-color: #ffffff;
-            color: #2B6CB0;
-            padding: 6px 16px;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            font-size: 18px;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 800;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        .result-desc {
+        .result-text {
             font-size: 15px;
             color: #4A5568;
-            line-height: 1.7;
-            margin-top: auto;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* 04. 직업기초역량진단 차트 스타일 */
+        .chart-box {
+            flex-shrink: 0;
+        }
+
+        .donut-chart {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            /* 55.22% 에 해당하는 각도까지 파란색, 나머지는 회색 */
+            background: conic-gradient(#2B6CB0 55.22%, #E2E8F0 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .donut-inner {
+            width: 88px;
+            height: 88px;
+            background-color: #F0F5FF; /* 내부 배경색과 매칭 */
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .score-num {
+            font-size: 26px;
+            font-weight: 800;
+            color: #2B6CB0;
+            line-height: 1;
+        }
+
+        .score-unit {
+            font-size: 12px;
+            font-weight: 700;
+            color: #718096;
+            margin-top: 4px;
+        }
+
+        .result-text-area {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
         }
 
         /* 03. 직업 탐색 */
@@ -879,37 +949,55 @@
 
                 <!-- 02 & 04 Row -->
                 <div class="card-row-split">
-                    <!-- 02. 진로적성검사 -->
-                    <div class="card" style="padding:0; border:none; box-shadow:none;">
+                    
+                    <!-- 02. 진로적성검사 (카드형으로 고도화) -->
+                    <div class="card card-result">
                         <div class="card-header">
                             <div class="card-title"><span class="num">02</span> 진로적성검사</div>
                         </div>
-                        <div class="card-sub" style="margin-bottom:16px;">진로검사를 통해 나의 성향을 파악하고, 성격과 흥미에 맞는 직업세계와 연결해보세요.</div>
-                        <div class="result-box">
-                            <div class="result-tip">Tip</div>
-                            <div class="result-header">진로적성검사 완료 <span class="result-date">(2025-07-15)</span></div>
-                            <div class="result-highlight">
-                                나의 유형 <span class="result-badge">외향 열정형</span>
+                        <div class="card-sub">진로검사를 통해 나의 성향을 파악하고, 성격과 흥미에 맞는 직업세계와 연결해보세요.</div>
+                        
+                        <div class="result-content bg-mint">
+                            <div class="result-top">
+                                <span class="result-tip">Tip</span>
+                                <span class="result-date">2025-07-15 완료</span>
                             </div>
-                            <p class="result-desc">내가 잘 하는 일을 해야 할까? 내가 좋아하는 직업은 무엇일까? 직업을 찾는 것은 진로설계의 첫걸음입니다. 진로적성검사를 통해 나의 진로를 발견해보세요.</p>
+                            <div class="result-type">
+                                나의 유형 <span class="badge-type">외향행정형</span>
+                            </div>
+                            <p class="result-text">내가 잘 하는 일을 해야 할까? 내가 좋아하는 직업은 무엇일까? 직업을 찾는 것은 진로설계의 첫걸음입니다. 진로적성검사를 통해 나의 진로를 발견해보세요.</p>
                         </div>
                     </div>
 
-                    <!-- 04. 직업기초역량진단 -->
-                    <div class="card" style="padding:0; border:none; box-shadow:none;">
+                    <!-- 04. 직업기초역량진단 (카드형 + 그래프 형태 추가) -->
+                    <div class="card card-result">
                         <div class="card-header">
                             <div class="card-title"><span class="num">04</span> 직업기초역량진단</div>
                         </div>
-                        <div class="card-sub" style="margin-bottom:16px;">직업에 필요한 10가지 기초역량 요인을 진단해보고 부족한 역량을 파악해보세요.</div>
-                        <div class="result-box blue">
-                            <div class="result-tip">Tip</div>
-                            <div class="result-header">직업기초역량진단 완료 <span class="result-date">(2023-03-10)</span></div>
-                            <div class="result-highlight">
-                                나의 직업 적합성 <span class="result-score">55.22점</span>
+                        <div class="card-sub">직업에 필요한 10가지 기초역량 요인을 진단해보고 부족한 역량을 파악해보세요.</div>
+                        
+                        <div class="result-content bg-blue flex-row">
+                            <div class="chart-box">
+                                <div class="donut-chart">
+                                    <div class="donut-inner">
+                                        <span class="score-num">55.2</span>
+                                        <span class="score-unit">점</span>
+                                    </div>
+                                </div>
                             </div>
-                            <p class="result-desc">실제 직무에서의 능력을 평가하는 기업이 증가하고 있습니다. 내가 가지고 있는 역량이 무엇인지 점검해 취업활동에 한발짝 더 나아가 보세요.</p>
+                            <div class="result-text-area">
+                                <div class="result-top">
+                                    <span class="result-tip blue">Tip</span>
+                                    <span class="result-date">2023-03-10 완료</span>
+                                </div>
+                                <div class="result-type" style="font-size: 16px;">
+                                    나의 직업 적합성
+                                </div>
+                                <p class="result-text">실제 직무에서의 능력을 평가하는 기업이 증가하고 있습니다. 내가 가지고 있는 역량이 무엇인지 점검해 취업활동에 한발짝 더 나아가 보세요.</p>
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
                 <!-- 03. 직업 탐색 -->
@@ -1002,7 +1090,7 @@
 
         </main>
 
-        <!-- Right Sidebar (Quick Menu 부활) -->
+        <!-- Right Sidebar (Quick Menu) -->
         <aside class="right-sidebar">
             <a href="#" class="btn-u-chance">U-Chance 바로가기</a>
             
